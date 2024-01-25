@@ -1,0 +1,68 @@
+@import "../../scss/abstract/_mixins.scss";
+
+.header-container {
+  // @include flex(space-between, center);
+  flex-direction: column;
+
+  
+  &.modal-active {
+    .modal {
+        width: 400px; 
+       
+    }
+   
+  }
+
+  & .container {
+    @include flex(space-between,center);
+    margin: 2rem;
+  }
+
+  & .main-ul {
+    @include flex(space-between, center);
+    list-style: none;
+    padding: 0;
+    position: relative;
+    // display: inline-block;
+    display: flex;
+    & :first-child:hover::after{
+content: "";
+width:100vw;
+position: absolute;
+top: 150%;
+right: 0;
+left: 0;
+background-color: blanchedalmond;
+height: 350px;
+
+
+    }
+    > li {
+      @include underlineEffect;
+      margin: 1rem;
+      ul {
+        display: none;
+      }
+
+      &:hover {
+        ul {
+          display: block;
+          position: absolute;
+          top: 100%;
+        }
+      }
+    }
+  }
+  & .modal {
+    height: 100vh;
+    width: 0;
+    position: absolute;
+    background-color: aqua;
+    right: 0;
+    top: 0;
+    overflow: hidden;
+    transition: width 3s ease;
+
+  }
+ 
+}
