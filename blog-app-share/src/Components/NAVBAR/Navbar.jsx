@@ -15,18 +15,25 @@ const Navbar = () => {
   }
 
   const handleClose = (e) => {
+    console.log("handle close works");
+    console.log(modalRef.current);
+    console.log(e.target);
 if(modalRef.current && !modalRef.current.contains(e.target)){
+  console.log("closing the modal");
   setOpen(false)
-  console.log(modalRef.current);
-  console.log(e.target);
 }
+console.log(modalRef.current);
+console.log(e.target);
 
 useEffect(()=> {
-  document.addEventListener("click",handleClose)
+  console.log("event listener works");
+ if(open) {
+  window.addEventListener("click",handleClose)
+ } 
 
-  return() => (document.removeEventListener("click",handleClose))
+  return() => (window.removeEventListener("click",handleClose))
   
-},[])
+},[open])
   }
   
   return (
@@ -38,6 +45,7 @@ useEffect(()=> {
         <div className="logo">PYSCRIPT-BLOGGER</div>
         <div className="nav-icons">
           <CiSearch />
+          <div className="divider"></div>
           <GrCart />
         </div>
       </div>

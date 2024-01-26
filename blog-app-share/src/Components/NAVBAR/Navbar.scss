@@ -8,7 +8,7 @@
   &.modal-active {
     .modal {
         width: 400px; 
-       
+       z-index: 20;
     }
    
   }
@@ -16,15 +16,26 @@
   & .container {
     @include flex(space-between,center);
     margin: 2rem;
+
+    & .nav-icons{
+      display: flex;
+      gap: .5rem;
+    }
+
+    & .divider {
+      border: 2px solid darkgray
+    }
   }
 
   & .main-ul {
     @include flex(space-between, center);
-    list-style: none;
+    width: 550px;
+    margin: auto;
+    // list-style: none;
     padding: 0;
     position: relative;
     // display: inline-block;
-    display: flex;
+    // display: flex;
     & :first-child:hover::after{
 content: "";
 width:100vw;
