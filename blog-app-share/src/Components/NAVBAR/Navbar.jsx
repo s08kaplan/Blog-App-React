@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false)
-  const modalRef = useRef("")
+  const modalRef = useRef(null)
 
 
   const handleOpen = () => {
