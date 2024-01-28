@@ -2,7 +2,9 @@ import "./RegisterForm.scss"
 
 const RegisterForm = () => {
   return (
-    <div>RegisterForm</div>
+    <div>
+        
+    </div>
   )
 }
 
