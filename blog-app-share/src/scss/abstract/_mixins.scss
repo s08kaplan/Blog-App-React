@@ -1,9 +1,10 @@
 
 
-@mixin flex($jc:center,$ai:center){
+@mixin flex($jc:center,$ai:center,$g:1rem){
     display: flex;
     justify-content: $jc;
     align-items: $ai;
+    gap:$g; 
 }
 
 @mixin underlineEffect {
@@ -20,7 +21,7 @@
       bottom: 0;
       transform-origin: bottom right;
       transition: transform .25s ease-out;
-      background-color: black;
+      background-color: blueviolet;
     }
 
     &:hover::after{
@@ -29,7 +30,12 @@
     }
   }
 
-
+@mixin input-style($ml:1rem,$w:20rem,$h:2rem,$br:.8rem){
+  margin-left: $ml;
+  width: $w;
+  height: $h;
+  border-radius: $br  ;
+}
 
 
 

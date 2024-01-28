@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { tryImages } from '../../TRY/try';
+import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import "./Carousel.scss"
 
 const Carousel = () => {
@@ -16,16 +17,21 @@ const Carousel = () => {
     };
     
     return (
-      <>
+      <section className='carousel-main'>
           
        <div className="carousel">
-        <button onClick={handlePrevious}>Previous</button>
-        <button onClick={handleNext}>Next</button>
-        
-        <img src={tryImages[index]} alt="nature-image" width={"450px"} style={{objectFit:"fill"}} />
-       
+
+        <img src={tryImages[index]} alt="nature-image" />
+
+        <div className="previous-icon" onClick={handlePrevious}>
+          <MdNavigateBefore />
+        </div>
+
+         <div className="next-icon" onClick={handleNext}>
+         <MdNavigateNext />
+          </div>
       </div>  
-      </>
+      </section>
   
      
     );

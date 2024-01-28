@@ -1,21 +1,28 @@
 import Carousel from "./Components/CAROUSEL/Carousel";
 import Navbar from "./Components/NAVBAR/Navbar";
 import { BrowserRouter as Router } from "react-router-dom";
-import "./scss/_reset.scss";
 import AppRouter from "./Router/AppRouter";
 import Footer from "./Components/FOOTER/Footer";
+import  store from './STORE/store'
+import { Provider } from 'react-redux'
+import "./scss/_reset.scss";
 
 function App() {
   return (
     <main>
-      <Navbar />
-
+      <Provider store={store}>
       <Router>
-        <AppRouter />
-      </Router>
 
-      <Carousel />
-      <Footer/>
+        <Navbar />
+
+        <AppRouter />
+        
+        {/* <Carousel /> */}
+        <Footer />
+
+      </Router>  
+      </Provider>
+      
     </main>
   );
 }

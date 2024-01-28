@@ -1,0 +1,33 @@
+@import "../../scss/abstract/_mixins.scss";
+
+.carousel-main {
+    @include flex(center,center);
+
+    & .carousel {
+        position: relative;
+        z-index: -1;
+          & img {
+width: 800px;
+border-radius: .8rem;
+object-fit: fill;
+    }
+
+    & .previous-icon {
+        position: absolute;
+        bottom: 250px;
+        left: 100px;
+        font-size: 3rem;
+        color: white;
+    } 
+    
+    & .next-icon {
+        position: absolute;
+        bottom: 230px;
+        right: 50px;
+        font-size: 3rem;
+        color: white!important ;
+    }
+
+    }
+
+}

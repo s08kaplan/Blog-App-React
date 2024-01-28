@@ -3,28 +3,58 @@
 .header-container {
   // @include flex(space-between, center);
   flex-direction: column;
-
+position: sticky;
   
   &.modal-active {
-    .modal {
+     .modal {
         width: 400px; 
-       z-index: 20;
+       z-index: 1000;
     }
    
   }
 
   & .container {
+    
     @include flex(space-between,center);
     margin: 2rem;
 
     & .nav-icons{
       display: flex;
       gap: .5rem;
+
     }
 
     & .divider {
       border: 2px solid darkgray
     }
+
+    & .nav-icos{
+      // @include flex(center,center)
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+    & .avatar-container {
+      position: relative;
+
+      & .avatar-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+
+      & li {
+        margin-top: .5rem;
+       
+      }
+
+      & a {
+        text-decoration: none;
+      }
+    } 
+    }
+   
   }
 
   & .main-ul {
@@ -36,23 +66,36 @@
     position: relative;
     // display: inline-block;
     // display: flex;
-    & :first-child:hover::after{
-content: "";
-width:100vw;
-position: absolute;
-top: 150%;
-right: 0;
-left: 0;
-background-color: blanchedalmond;
-height: 350px;
+//     & :first-child:hover::after{
+// content: "";
+// width:100vw;
+// position: absolute;
+// top: 150%;
+// right: 0;
+// left: 0;
+// background-color: blanchedalmond;
+// height: 350px;
 
 
-    }
-    > li {
+//     }
+    & li {
       @include underlineEffect;
       margin: 1rem;
+      position: relative;
+
+      a {
+        text-decoration: none;
+        color: inherit;
+
+        &:hover {
+          color: coral;
+        }
+      }
       ul {
         display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
       }
 
       &:hover {
@@ -76,4 +119,6 @@ height: 350px;
 
   }
  
+
+  
 }

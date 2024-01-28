@@ -1,0 +1,52 @@
+@import "../../scss/abstract/_mixins.scss";
+
+
+.login-container {
+   height:calc(100vh - 200px) ;
+   font-size: 2rem;
+   color: darkmagenta;
+   background-image: url("https://cdn.pixabay.com/photo/2022/11/30/13/26/login-7626832_1280.jpg");
+   background-size: cover;
+
+   
+@include flex(center,center);
+ 
+& .container {
+    @include flex(center, center);
+    flex-direction:column;
+    gap: 2rem;
+
+    & .lock-avatar{
+        font-size: 4rem;
+        color: coral;
+    }
+
+    & .login-email{
+        input{
+            margin-left: 1rem;
+            width: 20rem;
+            height: 2rem;
+            border-radius: .8rem  ;
+            box-shadow:aqua 2px 2px 10px .3px;
+            padding: .5rem;
+        }
+        label{
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.505));
+            
+        }
+        // @include input-style(1rem, 20rem, 2rem, .8rem)
+    }
+
+    & .login-password{
+        // @include input-style(1rem, 20rem, 2rem, .8rem);
+        input{
+            margin-left: 5rem;
+            width: 20rem;
+            height: 2rem;
+            border-radius: .8rem  ;
+            box-shadow:aqua 2px 2px 10px .3px;
+            padding: .5rem;
+        }
+    }
+} 
+}

@@ -1,0 +1,58 @@
+@import "../../scss/abstract/_mixins.scss";
+
+.contact-main {
+    @include flex(center,start);
+    margin-top: 2rem;
+    height: calc(100vh - 200px);
+   
+
+    & .contact-container {
+        @include flex(center,start,2rem);
+        flex-direction: column;
+        
+    
+    }
+
+    & .contact-body {
+        @include flex(center,center);
+    }
+
+    & .contact-footer {
+        @include flex(center,center,1rem);
+        
+       
+& .icons {
+    @include flex(center,center,1rem);
+    font-size: 2.5rem;
+    & .whatsapp {
+        color: #00860D;
+    }
+
+    & .facebook {
+        color: #1773EA;
+    }
+
+    & .instagram {
+       color:#9208EF;
+    }
+
+    & .telegram {
+        color: #2C9FD5;
+    }
+ 
+}
+
+& .arrow {
+    font-size: 2.5rem;
+    color: darkgray;
+    position:absolute;
+    bottom: 1rem;
+    right: 1rem;
+    &:hover {
+        color: darkorange;
+    }
+}
+
+        
+    }
+}

@@ -1,95 +1,132 @@
 import { CiSearch } from "react-icons/ci";
 import { GrCart } from "react-icons/gr";
-import { Link } from "react-router-dom";
-import "./Navbar.scss";
+import Avatar from "react-avatar";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import NavbarSearch from "../NAVBAR-SEARCH/NavbarSearch";
+import "./Navbar.scss";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const [open, setOpen] = useState(false)
-  const modalRef = useRef(null)
-
+  const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState(false);
+  const [avatarLog, setAvatarLog] = useState(false)
+  const { user } = useSelector(state => state.auth)
 
   const handleOpen = () => {
-    setOpen(!open)
-  }
+    setOpen(!open);
+  };
 
   const handleClose = (e) => {
-    console.log("handle close works");
-    console.log(modalRef.current);
-    console.log(e.target);
-if(modalRef.current && !modalRef.current.contains(e.target)){
-  console.log("closing the modal");
-  setOpen(false)
-}
-console.log(modalRef.current);
-console.log(e.target);
+    setOpen(false);
+    console.log("closing the modal");
+  };
 
-useEffect(()=> {
-  console.log("event listener works");
- if(open) {
-  window.addEventListener("click",handleClose)
- } 
+  const handleSearchModal = () => {
+    setSearch(!search);
+  };
 
-  return() => (window.removeEventListener("click",handleClose))
-  
-},[open])
+  const handleCloseSearchModal = (e) => {
+    if (search && !e.target.closest(".search-modal-active")) {
+      setSearch(false);
+    }
+  };
+
+  const logInfo = () => {
+    setAvatarLog(!avatarLog)
   }
-  
+
   return (
-    <nav className={`header-container ${open ? 'modal-active' : ''}`}>
+    <nav className={`header-container ${open ? "modal-active" : ""}`}>
       <div className="container">
-        <div onClick={handleOpen}><RxHamburgerMenu /> </div>
-        { open && <div className="modal" ref={modalRef}>modal active</div>}
-      
+        <div onClick={handleOpen}>
+          <RxHamburgerMenu />
+        </div>
+        {open && <div className="modal">modal active</div>}
+
         <div className="logo">PYSCRIPT-BLOGGER</div>
         <div className="nav-icons">
-          <CiSearch />
+          
+            <CiSearch onClick={handleSearchModal} />
+            {search && (
+              <NavbarSearch
+                className="search-modal-active"
+                onClick={handleCloseSearchModal}
+              />
+            )}
+          
+
           <div className="divider"></div>
-          <GrCart />
+          
+            <GrCart />
+          
+
+          <div className="avatar-container" onClick={logInfo}>
+               <Avatar
+              size="50"
+              src="https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_640.png"
+              round=".8rem"
+            />
+            <ul className="avatar-dropdown" style={{display: avatarLog ? "block" : "none"}}>
+             <Link to="my-profile"><li>My Profile</li> </Link> 
+             <Link to={!user && "/login"}><li>{user ? "Log out" : " Log in"}</li> </Link> 
+             <Link><li></li> </Link> 
+             <Link><li></li> </Link> 
+            </ul>
+          </div>
+         
+          
         </div>
       </div>
 
       <ul className="main-ul">
-        <li>
-          HOME
-          {/* dropdown categories */}
-        </li>
+        <Link to="/">
+          <li>
+            HOME
+            {/* dropdown categories */}
+          </li>
+        </Link>
 
-        <li>
-          ABOUT
-          <ul>
-            <li>About Us</li>
-            <li>About Me</li>
-          </ul>
-        </li>
+        <Link to="/about">
+          <li>
+            ABOUT
+            <ul>
+              <li>About Us</li>
+              <li>About Me</li>
+            </ul>
+          </li>
+        </Link>
 
-        <li>
-          BLOG
-          {/*add new blog will be here */}
-          <ul>
-            <li>Category 1</li>
-            <li></li>
-            <li></li>
-          </ul>
-        </li>
+        <Link to="/blog">
+          <li>
+            BLOG
+            {/*add new blog will be here */}
+            <ul>
+              <li>Category 1</li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+        </Link>
 
-        <li>
-          PAGES
-          {/* ! pages will be here */}
-          <ul>
-            <li>About</li>
-            <li>Blog</li>
-            <li>Shop</li>
-            <li>news</li>
-          </ul>
-        </li>
+        <Link>
+          <li>
+            PAGES
+            {/* ! pages will be here */}
+            <ul>
+            <Link to="/about"><li>About</li></Link>  
+           <Link to="/blog"> <li>Blog</li></Link>  
+           <Link to={user ? "/shop" : "/"}><li>Shop 🔐 </li></Link>   
+           <Link><li>news</li></Link>   
+            </ul>
+          </li>
+        </Link>
 
-        <li>CONTACT</li>
-
+        <Link to="/contact">
+          <li>CONTACT</li>
+        </Link>
       </ul>
-      {/* Avatar will be here */}
-
     </nav>
   );
 };
