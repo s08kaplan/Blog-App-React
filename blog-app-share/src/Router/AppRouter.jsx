@@ -8,12 +8,14 @@ import BlogDetails from "../PAGES/BLOG-DETAILS/BlogDetails";
 import Login from "../PAGES/LOGIN/Login";
 import MyProfile from "../PAGES/MY-PROFILE/MyProfile";
 import Contact from "../PAGES/CONTACT/Contact";
+import Register from "../PAGES/REGISTER/Register";
 
 const AppRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="login" element={<Login/>} />
+      <Route path="register" element={<Register/>} />
       <Route path="about" element={<About />} />
       <Route path="blog" element={<Blog />} />
       <Route path="contact" element={<Contact />} />
