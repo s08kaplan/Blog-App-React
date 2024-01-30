@@ -1,18 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import BlogDetails from '../BLOG-DETAILS/BlogDetails'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import BlogCard from '../../Components/BLOG-CARD/BlogCard'
+import useBlogData from '../../SERVICES/useBlogData'
 
 const Blog = () => {
     const {user} = useSelector( state => state.auth)
-    const { _id } = useSelector(state=> state.blog)
-   
+    const { idx } = useParams()
+    const { getData } = useBlogData()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+    getData("blogs")
+    }, [getData])
+    
+
   return (
     <section>
         <h1>blog</h1>
        
-       <div onClick={()=> user && _id ? <BlogDetails/> :  <Navigate to="/login"/>} className="blog-card">
+       <div onClick={()=> user && idx ? navigate("/blog-details") :  navigate("/blog")} className="blog-card">
 
         <BlogCard/> 
        </div>

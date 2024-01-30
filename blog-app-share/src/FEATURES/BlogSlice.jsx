@@ -28,6 +28,13 @@ state.comments = payload[3]
 
 },
 
+getSingleData:(state, { payload })=> {
+state.loading = false
+state.error = false
+state[payload.url] = payload.data.data
+
+},
+
     fetchFail:(state)=> {
         state.loading = false
         state.error = true
@@ -35,6 +42,6 @@ state.comments = payload[3]
   }
 });
 
-export const { fetchStart, fetchFail, getAllData } = BlogSlice.actions
+export const { fetchStart, fetchFail, getAllData, getSingleData } = BlogSlice.actions
 
 export default BlogSlice.reducer
