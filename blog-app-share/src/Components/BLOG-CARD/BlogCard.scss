@@ -1,0 +1,41 @@
+@import "../../scss/abstract/_mixins.scss";
+
+.blog-card-main {
+  
+  @include flex();
+
+  & .container {
+
+    @include grid();
+
+    & .cards {
+      border-radius: 28px;
+      background: linear-gradient(145deg, #f0f0f0, #cacaca);
+      box-shadow: 9px 9px 19px #929292, -9px -9px 19px #ffffff;
+      padding: .5rem;
+
+      & .blog-card-img {
+        width: 20rem;
+        object-fit: fill;
+        border-radius: .4rem;
+      }
+
+      & .blog-content {
+        font-size: 18px;
+        line-height: 22px;
+        width: 10rem;
+        height: 66px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
+
+      & .icons {
+        @include flex(start);
+        padding: .4rem;
+      }
+    }
+  }
+}

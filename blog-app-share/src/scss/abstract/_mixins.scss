@@ -37,6 +37,13 @@
   border-radius: $br  ;
 }
 
+@mixin grid($gtr:auto, $gtc:1fr 1fr 1fr,$g:2rem){
+  display: grid;
+  grid-template-rows: $gtr;
+  grid-template-columns: $gtc;
+  gap: $g;
+}
+
 
 
 

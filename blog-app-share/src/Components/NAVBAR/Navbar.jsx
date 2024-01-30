@@ -2,17 +2,21 @@ import { CiSearch } from "react-icons/ci";
 import { GrCart } from "react-icons/gr";
 import Avatar from "react-avatar";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import NavbarSearch from "../NAVBAR-SEARCH/NavbarSearch";
 import "./Navbar.scss";
 import { useSelector } from "react-redux";
+import useAuthCalls from "../../SERVICES/useAuthCalls";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState(false);
   const [avatarLog, setAvatarLog] = useState(false)
   const { user } = useSelector(state => state.auth)
+  const { logout } = useAuthCalls()
+
+  const navigate = useNavigate()
 
   const handleOpen = () => {
     setOpen(!open);
@@ -70,7 +74,11 @@ const Navbar = () => {
             />
             <ul className="avatar-dropdown" style={{display: avatarLog ? "block" : "none"}}>
              <Link to="my-profile"><li>My Profile</li> </Link> 
-             <Link to={!user && "/login"}><li>{user ? "Log out" : " Log in"}</li> </Link> 
+             <Link to={!user && "/login"}>
+              <li onClick={()=> user ? logout() : ""} >
+                {user ? "Log out"   : " Log in"}
+              </li> 
+              </Link> 
              <Link><li></li> </Link> 
              <Link><li></li> </Link> 
             </ul>
@@ -110,18 +118,22 @@ const Navbar = () => {
           </li>
         </Link>
 
-        <Link>
+        
           <li>
             PAGES
             {/* ! pages will be here */}
             <ul>
-            <Link to="/about"><li>About</li></Link>  
+            {/* <Link to="/about"><li>About</li></Link>  
            <Link to="/blog"> <li>Blog</li></Link>  
            <Link to={user ? "/shop" : "/"}><li>Shop 🔐 </li></Link>   
-           <Link><li>news</li></Link>   
+           <Link><li>news</li></Link>    */}
+            <li onClick={()=>navigate("about")}>About</li> 
+           <li onClick={()=> navigate("blog")}>Blog</li>  
+           <li onClick={()=> navigate(user ? "/shop" : "/")}>Shop 🔐 </li> 
+           <li onClick={()=> navigate("news")}>news</li>   
             </ul>
           </li>
-        </Link>
+        
 
         <Link to="/contact">
           <li>CONTACT</li>

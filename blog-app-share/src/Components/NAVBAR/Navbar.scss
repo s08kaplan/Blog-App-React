@@ -2,6 +2,7 @@
 
 .header-container {
   // @include flex(space-between, center);
+  height: 100px;
   flex-direction: column;
 position: sticky;
   
@@ -16,7 +17,7 @@ position: sticky;
   & .container {
     
     @include flex(space-between,center);
-    margin: 2rem;
+    margin: .5rem;
 
     & .nav-icons{
       display: flex;
