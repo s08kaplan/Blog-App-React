@@ -1,0 +1,15 @@
+@import "../../scss/abstract/_mixins.scss";
+
+.selected-blog-main {
+
+    & .container {
+        @include flex();
+        flex-direction: column;
+
+         img {
+           width: 30rem;
+           border-radius: .5rem;
+        }
+    }
+
+}

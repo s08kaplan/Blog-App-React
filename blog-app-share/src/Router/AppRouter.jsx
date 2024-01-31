@@ -14,15 +14,15 @@ const AppRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="login" element={<Login/>} />
-      <Route path="register" element={<Register/>} />
+      <Route path="login" element={<Login />} />
+      <Route path="register" element={<Register />} />
       <Route path="about" element={<About />} />
       <Route path="blog" element={<Blog />} />
+      <Route path="blog-details/:idx" element={<BlogDetails />} />
       <Route path="contact" element={<Contact />} />
       <Route path="my-profile" element={<MyProfile />} />
       <Route path="shop" element={<PrivateRouter />}>
         <Route path="" element={<ShopPage />} />
-        <Route path="blog-details/:idx" element={<BlogDetails/>} />
       </Route>
     </Routes>
   );

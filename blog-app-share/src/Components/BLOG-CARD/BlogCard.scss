@@ -35,6 +35,19 @@
       & .icons {
         @include flex(start);
         padding: .4rem;
+
+        & button {
+          padding: .5rem;
+          font-weight: 600;
+          margin-left: 5rem;
+          border-radius: .5rem;
+          transition: all .2s;
+
+          &:hover {
+            color: white;
+            background-color: black;
+          }
+        }
       }
     }
   }

@@ -13,17 +13,17 @@ const Blog = () => {
 
     useEffect(() => {
     getData("blogs")
-    }, [getData])
+    }, [])
     
 
   return (
     <section>
         <h1>blog</h1>
        
-       <div onClick={()=> user && idx ? navigate("/blog-details") :  navigate("/blog")} className="blog-card">
+       {/* <div onClick={()=> user && idx ? navigate("/blog-details") :  navigate("/blog")} className="blog-card"> */}
 
         <BlogCard/> 
-       </div>
+       {/* </div> */}
       
     </section>
   )
