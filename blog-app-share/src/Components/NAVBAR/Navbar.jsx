@@ -6,8 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import NavbarSearch from "../NAVBAR-SEARCH/NavbarSearch";
 import "./Navbar.scss";
-import { useSelector } from "react-redux";
 import useAuthCalls from "../../SERVICES/useAuthCalls";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -15,6 +15,7 @@ const Navbar = () => {
   const [avatarLog, setAvatarLog] = useState(false)
   const { user } = useSelector(state => state.auth)
   const { logout } = useAuthCalls()
+  const { categories } = useSelector(state=> state.blog)
 
   const navigate = useNavigate()
 
@@ -111,7 +112,19 @@ const Navbar = () => {
             BLOG
             {/*add new blog will be here */}
             <ul>
-              <li>Category 1</li>
+           {/* <Link to="/categories"> */}
+
+            <li>Categories
+              <ul>
+{categories?.map(category=> (
+  <li key={category?._id}>
+{category?.name}
+  </li>
+))}
+              </ul>
+            </li>
+
+            {/* </Link>    */}
               <li></li>
               <li></li>
             </ul>

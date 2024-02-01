@@ -8,7 +8,7 @@ const { getAllBlogData } = useBlogData()
 useEffect(()=>{
   getAllBlogData()
   
-},[])
+},[getAllBlogData])
 
 
 
