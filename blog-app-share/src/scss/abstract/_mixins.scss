@@ -44,7 +44,17 @@
   gap: $g;
 }
 
-
+@mixin cards($br:28px, $bck:linear-gradient(145deg, #f0f0f0, #cacaca), $bs: (9px 9px 19px #929292, -9px -9px 19px #ffffff), $p:.5rem) {
+  border-radius: $br;
+  background: $bck;
+  box-shadow: $bs;
+  padding: $p;
+}
+  @mixin img($w:20rem, $obj-fit: fill, $br: .4rem) {
+    width: $w;
+    object-fit: $obj-fit;
+    border-radius: $br;
+  }
 
 
 // @mixin underlineEffect($element){

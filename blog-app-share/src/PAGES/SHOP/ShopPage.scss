@@ -1,0 +1,18 @@
+@import "../../scss/abstract/_mixins.scss";
+
+.shop-main {
+@include flex();
+
+& .container {
+    @include grid();
+
+    & .product-card {
+    @include cards();
+    
+    img {
+        @include img()
+    }
+    }
+    
+}
+}
