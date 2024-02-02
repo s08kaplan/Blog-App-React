@@ -13,7 +13,15 @@ const useAxios = () => {
         headers: {Authorization: `Token ${token}`}
       });
     
-  return { axiosPublic, axiosWithToken }
+      const axiosNews = axios.create({
+        baseURL: `${import.meta.env.VITE_NEWS_BASE_URL}`,
+      });
+
+      const axiosShoppingProductsAll = axios.create({
+        baseURL: `${import.meta.env.VITE_SHOPPING_BASE_URL}`,
+      });
+
+  return { axiosPublic, axiosWithToken, axiosNews, axiosShoppingProductsAll }
 }
 
 export default useAxios

@@ -1,0 +1,17 @@
+@import "../../scss/abstract/_mixins.scss";
+
+.profile-main {
+@include flex();
+font-size: x-large;
+font-weight: 700;
+color: darkslateblue;
+
+& .container {
+    @include flex();
+    flex-direction: column;
+}
+    img {
+        width: 400px;
+        border-radius: .5rem;
+    }
+}

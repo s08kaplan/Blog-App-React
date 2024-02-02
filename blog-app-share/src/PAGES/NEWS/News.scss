@@ -1,0 +1,38 @@
+@import "../../scss/abstract/_mixins.scss";
+
+.news-main {
+  @include flex();
+
+  & .container {
+    height: 550px;
+    padding: 1rem;
+    @include grid();
+    place-items: center;
+    & .news-card {
+      border-radius: 28px;
+      background: linear-gradient(145deg, #f0f0f0, #cacaca);
+      box-shadow: 9px 9px 19px #929292, -9px -9px 19px #ffffff;
+      padding: 1rem;
+
+      & .news-description {
+        
+      
+        font-size: 1rem;
+        line-height: 1.1rem;
+        height: 2rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: horizontal;
+      
+
+      }
+      img {
+        width: 20rem;
+        object-fit: contain;
+        border-radius: 0.4rem;
+      }
+    }
+  }
+}

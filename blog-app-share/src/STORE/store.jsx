@@ -12,6 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage/session'
 import AuthReducer from "../FEATURES/AuthSlice"
 import BlogReducer from "../FEATURES/BlogSlice"
+import NewsReducer from "../FEATURES/NewsSlice"
 
  
 const persistConfig = {
@@ -25,7 +26,7 @@ const store = configureStore({
     reducer:{
        auth: persistedReducer ,
        blog: BlogReducer,
-
+news: NewsReducer
     },
     devTools: import.meta.env.NODE_ENV !== "production",
     middleware: (getDefaultMiddleware) =>

@@ -70,7 +70,7 @@ const Navbar = () => {
           <div className="avatar-container" onClick={logInfo}>
                <Avatar
               size="50"
-              src="https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_640.png"
+              src= { user ? user.image : "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_640.png"} 
               round=".8rem"
             />
             <ul className="avatar-dropdown" style={{display: avatarLog ? "block" : "none"}}>

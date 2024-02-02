@@ -9,6 +9,7 @@ import Login from "../PAGES/LOGIN/Login";
 import MyProfile from "../PAGES/MY-PROFILE/MyProfile";
 import Contact from "../PAGES/CONTACT/Contact";
 import Register from "../PAGES/REGISTER/Register";
+import News from "../PAGES/NEWS/News";
 
 const AppRouter = () => {
   return (
@@ -17,6 +18,7 @@ const AppRouter = () => {
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
       <Route path="about" element={<About />} />
+      <Route path="news" element={<News />} />
       <Route path="blog" element={<Blog />} />
       <Route path="blog-details/:idx" element={<BlogDetails />} />
       <Route path="contact" element={<Contact />} />

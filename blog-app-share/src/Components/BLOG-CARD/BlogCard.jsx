@@ -30,7 +30,7 @@ const BlogCard = () => {
                 <LuEye />
               </div>
              
-              <Link to={ user ? `/blog-details/${blog._id}` : "/blog"}>
+              <Link to={ user ? `/blog-details/${blog._id}` : "/login"}>
               <button>Read More</button>
               </Link>
               
