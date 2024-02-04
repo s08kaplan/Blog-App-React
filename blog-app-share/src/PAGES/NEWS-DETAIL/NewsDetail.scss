@@ -1,0 +1,15 @@
+@import "../../scss/abstract/_mixins.scss";
+
+.news-detail-main {
+@include flex();
+
+& .container {
+    
+    padding: 1rem;
+
+    & .selected-news{
+        @include flex();
+        flex-direction: column;
+    }
+}
+}

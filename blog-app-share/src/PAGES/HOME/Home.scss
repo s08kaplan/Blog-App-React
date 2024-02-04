@@ -1,4 +1,26 @@
+@import "../../scss/abstract/_mixins.scss";
+
 .home-span {
     color: green;
     text-transform: uppercase;
 }
+
+.container {
+
+    & .spinner {
+        @include flex();
+    }
+   .side-container{
+    @include flex($jc:start);
+    padding: .5rem;
+    & .side-list {
+@include flex();
+flex-direction: column;
+img{
+    @include img($w:10rem);
+}
+}
+} 
+}
+
+

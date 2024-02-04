@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import "./LoginForm.scss"
 
 const LoginForm = ({
     values,
@@ -10,7 +12,7 @@ const LoginForm = ({
     isSubmitting
 }) => {
   return (
-    <div>
+    <section className='login-form'>
        <form onSubmit={handleSubmit}>
           <div className="login-email">
             <label htmlFor="email">Email Address</label>
@@ -36,13 +38,19 @@ const LoginForm = ({
             {errors.password && touched.password && errors.password}
           </div>
 
-          <div>
-            <button type="submit"  disabled={isSubmitting}>
+          <div className='btn'>
+            <div className="submit">
+              <button type="submit"  disabled={isSubmitting}>
               Submit
             </button>
+            </div>
+            <div className="register">
+             <Link to="/register"><button>Register</button></Link> 
+              <span>Don't you have an account? 😨</span>
+            </div>
           </div>
         </form>
-    </div>
+    </section>
   )
 }
 

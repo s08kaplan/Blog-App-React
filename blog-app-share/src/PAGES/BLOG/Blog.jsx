@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
-import BlogDetails from "../BLOG-DETAILS/BlogDetails";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+// import BlogDetails from "../BLOG-DETAILS/BlogDetails";
+// import { Navigate, useNavigate, useParams } from "react-router-dom";
+// import { useSelector } from "react-redux";
 import BlogCard from "../../Components/BLOG-CARD/BlogCard";
 import useBlogData from "../../SERVICES/useBlogData";
 import "./Blog.scss";
 
 const Blog = () => {
-  const { user } = useSelector((state) => state.auth);
-  const { idx } = useParams();
+  // const { user } = useSelector((state) => state.auth);
+  // const { idx } = useParams();
   const { getData } = useBlogData();
-  const navigate = useNavigate();
+  
 
   useEffect(() => {
     getData("blogs");

@@ -6,10 +6,19 @@ const MyProfile = () => {
   return (
     <section className="profile-main">
       <div className="container">
-        <img src={user?.image} alt="user-image" />
+        { user.username ? 
+        <>
+          (<img src={user?.image} alt="user-image" />
         <span>{user?.firstName} </span>
         <span>{user?.lastName} </span>
-        <p>{user?.bio}</p>
+        <span>{user?.email}</span>
+        <p>{user?.bio}</p>) 
+        </>
+        : (<span>Sorry something went wrong please log in </span> )}
+      
+      
+      
+        
       </div>
      
     </section>

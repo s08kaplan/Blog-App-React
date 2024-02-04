@@ -10,6 +10,9 @@ import MyProfile from "../PAGES/MY-PROFILE/MyProfile";
 import Contact from "../PAGES/CONTACT/Contact";
 import Register from "../PAGES/REGISTER/Register";
 import News from "../PAGES/NEWS/News";
+import NewsDetail from "../PAGES/NEWS-DETAIL/NewsDetail";
+import AboutUs from "../PAGES/ABOUT-US/AboutUs";
+import AboutMe from "../PAGES/ABOUT-ME/AboutMe";
 
 const AppRouter = () => {
   return (
@@ -18,7 +21,10 @@ const AppRouter = () => {
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
       <Route path="about" element={<About />} />
+      <Route path="about-us" element={<AboutUs />} />
+      <Route path="about-me" element={<AboutMe />} />
       <Route path="news" element={<News />} />
+      <Route path="news-detail/:newsId" element={<NewsDetail />} />
       <Route path="blog" element={<Blog />} />
       <Route path="blog-details/:idx" element={<BlogDetails />} />
       <Route path="contact" element={<Contact />} />

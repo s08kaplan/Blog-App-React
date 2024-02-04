@@ -56,6 +56,14 @@
     border-radius: $br;
   }
 
+  @mixin button($p:.4rem, $br:.5rem, $c: magenta, $bg: lightblue ){
+    padding: $p;
+    border-radius: $br;
+    color: $c;
+    background-color: $bg;
+  }
+
+  
 
 // @mixin underlineEffect($element){
 //  #{$element}:hover::after {

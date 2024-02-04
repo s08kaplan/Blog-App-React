@@ -1,0 +1,31 @@
+@import "../../scss/abstract/_mixins.scss";
+
+.btn {
+@include flex();
+margin-top: 1rem;
+margin-left: 5rem;
+flex-direction: column;
+
+
+ button {
+   @include button();
+   &:hover{
+    color:lightblue;
+    background-color: magenta;
+   } 
+ }
+
+& .submit {
+    margin-right: 9rem;
+}
+
+ & .register {
+@include flex();
+margin-left: 7rem;
+    span{
+        font-size: large;
+        color:rgb(174, 20, 153)
+    }
+ }
+
+}

@@ -30,4 +30,13 @@ color: red
     font-size: 1.3rem;
    
 }
+
+  button {
+@include button($c:blueviolet, $bg:lightblue);
+position: relative;
+left: 40%;
+margin-top: 1rem;
+
+}
+
 }
