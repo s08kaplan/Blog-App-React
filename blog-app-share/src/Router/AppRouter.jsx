@@ -13,6 +13,8 @@ import News from "../PAGES/NEWS/News";
 import NewsDetail from "../PAGES/NEWS-DETAIL/NewsDetail";
 import AboutUs from "../PAGES/ABOUT-US/AboutUs";
 import AboutMe from "../PAGES/ABOUT-ME/AboutMe";
+import CartPage from "../PAGES/CARTPAGE/CartPage";
+import NotFound from "../PAGES/NOT-FOUND/NotFound";
 
 const AppRouter = () => {
   return (
@@ -20,7 +22,7 @@ const AppRouter = () => {
       <Route path="/" element={<Home />} />
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
-      <Route path="about" element={<About />} />
+      {/* <Route path="about" element={<About />} /> */}
       <Route path="about-us" element={<AboutUs />} />
       <Route path="about-me" element={<AboutMe />} />
       <Route path="news" element={<News />} />
@@ -32,6 +34,10 @@ const AppRouter = () => {
       <Route path="shop" element={<PrivateRouter />}>
         <Route path="" element={<ShopPage />} />
       </Route>
+      <Route path="cart-page/:cartId" element={<PrivateRouter />}>
+        <Route path="" element={<CartPage />} />
+      </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

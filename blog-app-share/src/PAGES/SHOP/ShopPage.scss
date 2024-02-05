@@ -2,6 +2,7 @@
 
 .shop-main {
 @include flex();
+margin-bottom: .8rem;
 
 & .container {
     @include grid();

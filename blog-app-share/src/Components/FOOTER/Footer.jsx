@@ -5,8 +5,11 @@ import { BsWhatsapp } from "react-icons/bs";
 import { FaTelegramPlane } from "react-icons/fa";
 import "./Footer.scss"
 
+
 const Footer = () => {
+  
   return (
+    
     <footer>
       <div className="footer-container">
         <div className="icons">

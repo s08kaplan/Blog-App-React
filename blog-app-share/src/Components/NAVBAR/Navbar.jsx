@@ -87,7 +87,11 @@ const Navbar = () => {
 
           <div className="divider"></div>
 
-          <GrCart />
+          <Link to={user ? "/cart-page" : "/"}>
+            <div className="cart">
+              <GrCart />
+            </div>
+          </Link>
 
           <div className="avatar-container" onClick={logInfo}>
             <Avatar
@@ -111,14 +115,14 @@ const Navbar = () => {
                   {user ? "Log out" : " Log in"}
                 </li>
               </Link>
-              { !user.username && (
+              {!user.username && (
                 <Link>
-                <li>Register</li>{" "}
-              </Link>
+                  <li>Register</li>{" "}
+                </Link>
               )}
-              
+
               <Link>
-                <li></li>{" "}
+                <li></li>
               </Link>
             </ul>
           </div>
@@ -127,21 +131,22 @@ const Navbar = () => {
 
       <ul className="main-ul">
         <Link to="/">
-          <li>
-            HOME
-            {/* dropdown categories */}
-          </li>
+          <li>HOME</li>
         </Link>
 
-        <Link to="/about">
-          <li>
-            ABOUT
-            <ul>
-            <Link to="/about-us"><li>About Us</li></Link>  
-            <Link to="/about-me"><li>About Me</li></Link>  
-            </ul>
-          </li>
-        </Link>
+        {/* <Link to="/about"> */}
+        <li>
+          ABOUT
+          <ul>
+            <Link to="/about-us">
+              <li>About Us</li>
+            </Link>
+            <Link to="/about-me">
+              <li>About Me</li>
+            </Link>
+          </ul>
+        </li>
+        {/* </Link> */}
 
         <Link to="/blog">
           <li>
@@ -163,11 +168,9 @@ const Navbar = () => {
           </li>
         </Link>
 
-        <li style={{color:"#551A8B"}}>
+        <li style={{ color: "#551A8B" }}>
           PAGES
-          
           <ul>
-           
             <li onClick={() => navigate("about")}>About</li>
             <li onClick={() => navigate("blog")}>Blog</li>
             <li onClick={() => navigate(user ? "/shop" : "/")}>Shop 🔐 </li>

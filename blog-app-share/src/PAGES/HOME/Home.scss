@@ -1,26 +1,26 @@
 @import "../../scss/abstract/_mixins.scss";
 
-.home-span {
+.home-main {
+    height: calc(100vh - 390px) ;
+  .home-span {
     color: green;
     text-transform: uppercase;
-}
+  }
 
-.container {
-
+  .container {
     & .spinner {
-        @include flex();
+      @include flex();
     }
-   .side-container{
-    @include flex($jc:start);
-    padding: .5rem;
-    & .side-list {
-@include flex();
-flex-direction: column;
-img{
-    @include img($w:10rem);
+    .side-container {
+      @include flex($jc: start);
+      padding: 0.5rem;
+      & .side-list {
+        @include flex();
+        flex-direction: column;
+        img {
+          @include img($w: 10rem);
+        }
+      }
+    }
+  }
 }
-}
-} 
-}
-
-

@@ -16,7 +16,7 @@ console.log(users);
 console.log(blogs);
 
   return (
-    <div className="home-main">
+    <main className="home-main">
       <div className="container">
         { users.loading || blogs.loading ? (<div className="spinner"> <Spinner/></div>) : (<div className="side-container">
 {users?.map(user=>(
@@ -32,7 +32,7 @@ console.log(blogs);
         </div>
       </div>
 
-    </div>
+    </main>
   )
 }
 

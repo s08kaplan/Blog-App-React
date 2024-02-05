@@ -1,0 +1,26 @@
+@import "../../scss/abstract/_mixins.scss";
+
+.cart-main {
+  min-height: calc(100vh - 390px);
+
+  & .cart-container {
+@include flex();
+    & .selected-product {
+@include grid();
+      & .product-card {
+        @include cards();
+        @include flex();
+        flex-direction: column;
+        img {
+            @include img();
+        }
+        & .price{
+          @include flex();
+          button {
+            @include button();
+          }  
+        }
+      }
+    }
+  }
+}
