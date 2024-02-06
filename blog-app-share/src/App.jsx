@@ -22,7 +22,7 @@ function App() {
         <AppRouter />
         
         {/* <Carousel /> */}
-        <Footer />
+        {/* <Footer /> */}
 
       </Router>  
       </PersistGate>

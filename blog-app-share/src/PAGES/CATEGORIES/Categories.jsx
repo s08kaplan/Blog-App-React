@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 
 const Categories = () => {
     const { categories } = useSelector(state=> state.blog)
+    console.log(categories);
   return (
     <section className='categories-main'>
         <div className="container">
@@ -27,8 +28,8 @@ const Categories = () => {
 <div className="category">
     <label htmlFor="category">Category</label>
     <select name="category" id="category">
-        {categories.map(category=> (
-            <div key={category.name}>{}</div>
+        {categories?.map(category=> (
+            <div key={category?._id}>{category?.name}</div>
         ))}
     </select>
 </div>

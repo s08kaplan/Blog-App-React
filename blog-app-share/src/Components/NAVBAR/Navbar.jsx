@@ -173,8 +173,9 @@ const Navbar = () => {
           <ul>
             <li onClick={() => navigate("about")}>About</li>
             <li onClick={() => navigate("blog")}>Blog</li>
-            <li onClick={() => navigate(user ? "/shop" : "/")}>Shop 🔐 </li>
-            <li onClick={() => navigate("news")}>news</li>
+            <li onClick={() => navigate(user ? "/shop" : "/")}>Shop {user ? "" :"🔐" }</li>
+            <li onClick={() => navigate("news")}>News</li>
+            <li onClick={() => navigate("categories")}>Categories</li>
           </ul>
         </li>
 

@@ -7,7 +7,7 @@ footer {
   position: relative;
   bottom: 0;
   background-color: black;
-  z-index: 20;
+  // z-index: 20;
 
   & .footer-container {
     @include flex();

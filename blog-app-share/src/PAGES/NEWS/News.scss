@@ -1,6 +1,7 @@
 @import "../../scss/abstract/_mixins.scss";
 
 .news-main {
+
   @include flex();
 
   & .container {

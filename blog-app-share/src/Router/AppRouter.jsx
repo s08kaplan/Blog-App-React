@@ -15,6 +15,7 @@ import AboutUs from "../PAGES/ABOUT-US/AboutUs";
 import AboutMe from "../PAGES/ABOUT-ME/AboutMe";
 import CartPage from "../PAGES/CARTPAGE/CartPage";
 import NotFound from "../PAGES/NOT-FOUND/NotFound";
+import Categories from "../PAGES/CATEGORIES/Categories";
 
 const AppRouter = () => {
   return (
@@ -25,6 +26,7 @@ const AppRouter = () => {
       {/* <Route path="about" element={<About />} /> */}
       <Route path="about-us" element={<AboutUs />} />
       <Route path="about-me" element={<AboutMe />} />
+      <Route path="categories" element={<Categories />} />
       <Route path="news" element={<News />} />
       <Route path="news-detail/:newsId" element={<NewsDetail />} />
       <Route path="blog" element={<Blog />} />
