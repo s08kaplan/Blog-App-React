@@ -8,17 +8,14 @@ const MyProfile = () => {
       <div className="container">
         { user.username ? 
         <>
-          (<img src={user?.image} alt="user-image" />
+          <img src={user?.image} alt="user-image" />
         <span>{user?.firstName} </span>
         <span>{user?.lastName} </span>
         <span>{user?.email}</span>
-        <p>{user?.bio}</p>) 
+        <p>{user?.bio}</p>
         </>
-        : (<span>Sorry something went wrong please log in </span> )}
+        : <span>Sorry something went wrong please log in </span> }
       
-      
-      
-        
       </div>
      
     </section>

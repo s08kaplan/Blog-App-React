@@ -22,12 +22,16 @@ const BlogCard = () => {
             <h3>{blog.title}</h3>
             <p className="blog-content">{blog.content}</p>
             <div className="icons">
-              <div onClick={()=> setLike(!like)}>{like ? <FcLike /> : <GrLike />}</div>
+              <div onClick={()=> setLike(!like)}>{like ? <FcLike /> : <GrLike />}
+              <span>{ blog.likes.length }</span>
+              </div>
               <div>
                 <FaRegCommentDots />
+                <span>{blog.comments.length}</span>
               </div>
               <div>
                 <LuEye />
+              {blog.countOfVisitors}
               </div>
              
               <Link to={ user ? `/blog-details/${blog._id}` : "/login"}>
