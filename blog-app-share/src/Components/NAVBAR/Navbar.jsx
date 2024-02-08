@@ -15,7 +15,7 @@ const Navbar = () => {
   const [search, setSearch] = useState(false);
   const [avatarLog, setAvatarLog] = useState(false);
   const { user } = useSelector((state) => state.auth);
-  const { logout } = useAuthCalls();
+  const { logout, login } = useAuthCalls();
   const { categories } = useSelector((state) => state.blog);
 
   const navigate = useNavigate();
@@ -111,13 +111,13 @@ const Navbar = () => {
                 <li>My Profile</li>{" "}
               </Link>
               <Link to={!user && "/login"}>
-                <li onClick={() => (user ? logout() : "")}>
+                <li onClick={() => (user ? logout() : login())}>
                   {user ? "Log out" : " Log in"}
                 </li>
               </Link>
               {!user.username && (
-                <Link>
-                  <li>Register</li>{" "}
+                <Link to="/register">
+                  <li>Register</li>
                 </Link>
               )}
 

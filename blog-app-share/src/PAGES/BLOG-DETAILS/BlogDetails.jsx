@@ -12,20 +12,74 @@ const BlogDetails = () => {
   const { blogs, comments } = useSelector((state) => state.blog);
   const { axiosWithToken } = useAxios();
   const [showComment, setShowComment] = useState(false);
-  console.log(comments);
+  const [textarea, setTextarea] = useState("")
+  const [commentList, setCommentList] = useState([])
+//  console.log(blogs);
+ 
   const addRemoveLike = async (url = "blogs") => {
     try {
       const { data } = await axiosWithToken.post(`${url}/${idx}/postLike`);
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.log(error);
     }
   };
+// console.log("#############");
+// console.log(comments[0].comment);
+// console.log("-----------------------");
+  const getCommentList = async () => {
+    try {
+      const { data } = await axiosWithToken("comments/")
+      // console.log("**********");
+      console.log(data);
+      // console.log("*************");
+      setCommentList(data.data)
+    } catch (error) {
+     console.log(error); 
+    }
+    
+  }
+  const getSingleComment = async () => {
+    try {
+      const { data } = await axiosWithToken("comments/65c3cc93ad429ea99171cd36/")
+      console.log(data.data.comment);
+      // console.log("comment got  successfully!!!");
+      // setCommentList(data.data)
+    } catch (error) {
+     console.log(error); 
+    }
+    
+  }
 
   useEffect(() => {
     addRemoveLike();
+  getCommentList()
+  getSingleComment()
   }, []);
 
+  console.log(commentList);
+ 
+
+  const handleTextArea = (e) => {
+    setTextarea(e.target.value)
+    console.log(textarea);
+    
+  }
+
+  const handleAddComment = (e) => {
+e.preventDefault()
+try {
+  axiosWithToken.post(`comments/`,{blogId:idx, comment: textarea})
+  console.log("added");
+  setTextarea("")
+  setShowComment(true)
+} catch (error) {
+  console.log(error);
+}
+
+
+  }
+console.log(comments.blogId);
   const selectedBlog = blogs.find((blog) => blog._id === idx);
   const selectedComment = comments.find((comment) => comment.blogId === idx);
   console.log(selectedComment);
@@ -48,13 +102,15 @@ const BlogDetails = () => {
           <span> {selectedBlog?.countOfVisitors} </span>
         </div>
         <div className="comments">
-          {showComment && <div>
+          {showComment && (<div>
             <span>{selectedComment?.userId?.username}</span>
             {selectedComment?.comment}
             <div className="add-comment">
-              <textarea name="addComment" id="addComment" cols="30" rows="10" placeholder="Add Your Toughts" style={{resize:"none"}} />
+              <textarea name="addComment" id="addComment" cols="30" rows="10" placeholder="Add Your Thoughts" style={{resize:"none"}} onChange={handleTextArea}/>
             </div>
-            </div>}
+            <button onClick={handleAddComment}>Add Your Thoughts</button>
+            </div>)}
+
         </div>
       </div>
     </div>

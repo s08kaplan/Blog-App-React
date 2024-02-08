@@ -18,8 +18,8 @@ console.log(blogs);
   return (
     <main className="home-main">
       <div className="container">
-        { users.loading || blogs.loading ? (<div className="spinner"> <Spinner/></div>) : (<div className="side-container">
-{users?.map(user=>(
+        { users?.loading || blogs?.loading  ? (<div className="spinner"> <Spinner/></div>) : (<div className="side-container">
+{users.length !=="" && users?.map(user=>(
 <div className="side-list" key={user?._id}>
  <span> {user?.username}</span>
  <img src={user?.image} alt={user?.username} />
