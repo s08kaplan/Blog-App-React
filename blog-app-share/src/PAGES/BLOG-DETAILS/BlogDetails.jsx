@@ -5,55 +5,25 @@ import { LuEye } from "react-icons/lu";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import useAxios from "../../SERVICES/useAxios";
+import useBlogData from "../../SERVICES/useBlogData";
+import Textarea from "../../Components/REUSABLE-COMPONENTS/Textarea";
+import useBlogApi from "./useBlogApi";
 import "./BlogDetails.scss";
 
 const BlogDetails = () => {
   const { idx } = useParams();
-  const { blogs, comments } = useSelector((state) => state.blog);
+  const { blogs } = useSelector((state) => state.blog);
   const { axiosWithToken } = useAxios();
+  const { getData } = useBlogData()
   const [showComment, setShowComment] = useState(false);
   const [textarea, setTextarea] = useState("");
-  const [commentList, setCommentList] = useState([]);
-  console.log(blogs);
-
-  const addRemoveLike = async (url = "blogs") => {
-    try {
-      const { data } = await axiosWithToken.post(`${url}/${idx}/postLike`);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getCommentList = async () => {
-    try {
-      const { data } = await axiosWithToken("comments/");
-
-      console.log(data);
-
-      setCommentList(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const getSingleComment = async (endpoints) => {
-    try {
-      const commentsPromises = endpoints.map(async (endpoint) => {
-        const { data } = await axiosWithToken(`comments/${endpoint}/`);
-        console.log(data.data);
-        return data.data;
-      });
-      const comments = await Promise.all(commentsPromises);
-      setCommentList(comments);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  console.log(commentList);
+ 
+  const { commentList, setCommentList, addRemoveLike, getCommentList, getSingleComment } = useBlogApi()
 
   useEffect(() => {
     addRemoveLike();
     getCommentList();
-    
+    getData()
   }, []);
 
   useEffect(() => {
@@ -108,16 +78,13 @@ const BlogDetails = () => {
                 </div>
               ))}
               <div className="add-comment">
-                <textarea
-                  name="addComment"
-                  id="addComment"
-                  cols="30"
-                  rows="10"
-                  placeholder="Add Your Thoughts"
-                  style={{ resize: "none" }}
-                  value={textarea}
-                  onChange={handleTextArea}
+
+                <Textarea
+                value={textarea}
+                onChange={handleTextArea}
+                placeholder="Add Your Thoughts"
                 />
+        
                 <button onClick={handleAddComment}>Add Your Thoughts</button>
               </div>
             </div>
