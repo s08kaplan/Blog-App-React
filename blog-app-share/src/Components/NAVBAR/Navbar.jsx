@@ -107,8 +107,8 @@ const Navbar = () => {
               className="avatar-dropdown"
               style={{ display: avatarLog ? "block" : "none" }}
             >
-              <Link to="my-profile">
-                <li>My Profile</li>{" "}
+              <Link to={user ? "my-profile" : "/"}>
+                <li>My Profile</li>
               </Link>
               <Link to={!user && "/login"}>
                 <li onClick={() => (user ? logout() : login())}>

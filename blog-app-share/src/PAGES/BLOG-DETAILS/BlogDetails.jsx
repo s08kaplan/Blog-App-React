@@ -12,77 +12,69 @@ const BlogDetails = () => {
   const { blogs, comments } = useSelector((state) => state.blog);
   const { axiosWithToken } = useAxios();
   const [showComment, setShowComment] = useState(false);
-  const [textarea, setTextarea] = useState("")
-  const [commentList, setCommentList] = useState([])
-//  console.log(blogs);
- 
+  const [textarea, setTextarea] = useState("");
+  const [commentList, setCommentList] = useState([]);
+  console.log(blogs);
+
   const addRemoveLike = async (url = "blogs") => {
     try {
       const { data } = await axiosWithToken.post(`${url}/${idx}/postLike`);
-      // console.log(data);
     } catch (error) {
       console.log(error);
     }
   };
-// console.log("#############");
-// console.log(comments[0].comment);
-// console.log("-----------------------");
+
   const getCommentList = async () => {
     try {
-      const { data } = await axiosWithToken("comments/")
-      // console.log("**********");
+      const { data } = await axiosWithToken("comments/");
+
       console.log(data);
-      // console.log("*************");
-      setCommentList(data.data)
+
+      setCommentList(data.data);
     } catch (error) {
-     console.log(error); 
+      console.log(error);
     }
-    
-  }
-  const getSingleComment = async () => {
+  };
+  const getSingleComment = async (endpoints) => {
     try {
-      const { data } = await axiosWithToken("comments/65c3cc93ad429ea99171cd36/")
-      console.log(data.data.comment);
-      // console.log("comment got  successfully!!!");
-      // setCommentList(data.data)
+      const commentsPromises = endpoints.map(async (endpoint) => {
+        const { data } = await axiosWithToken(`comments/${endpoint}/`);
+        console.log(data.data);
+        return data.data;
+      });
+      const comments = await Promise.all(commentsPromises);
+      setCommentList(comments);
     } catch (error) {
-     console.log(error); 
+      console.log(error);
     }
-    
-  }
+  };
+  console.log(commentList);
 
   useEffect(() => {
     addRemoveLike();
-  getCommentList()
-  getSingleComment()
+    getCommentList();
+    getSingleComment(selectedBlog.comments);
   }, []);
 
-  console.log(commentList);
- 
-
   const handleTextArea = (e) => {
-    setTextarea(e.target.value)
+    setTextarea(e.target.value);
     console.log(textarea);
-    
-  }
+  };
 
   const handleAddComment = (e) => {
-e.preventDefault()
-try {
-  axiosWithToken.post(`comments/`,{blogId:idx, comment: textarea})
-  console.log("added");
-  setTextarea("")
-  setShowComment(true)
-} catch (error) {
-  console.log(error);
-}
+    e.preventDefault();
+    try {
+      axiosWithToken.post(`comments/`, { blogId: idx, comment: textarea });
+      console.log("added");
+      setTextarea("");
+      setShowComment(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-
-  }
-console.log(comments.blogId);
   const selectedBlog = blogs.find((blog) => blog._id === idx);
-  const selectedComment = comments.find((comment) => comment.blogId === idx);
-  console.log(selectedComment);
+
   return (
     <div className="selected-blog-main">
       <div className="container">
@@ -102,15 +94,29 @@ console.log(comments.blogId);
           <span> {selectedBlog?.countOfVisitors} </span>
         </div>
         <div className="comments">
-          {showComment && (<div>
-            <span>{selectedComment?.userId?.username}</span>
-            {selectedComment?.comment}
-            <div className="add-comment">
-              <textarea name="addComment" id="addComment" cols="30" rows="10" placeholder="Add Your Thoughts" style={{resize:"none"}} onChange={handleTextArea}/>
+          {showComment && (
+            <div>
+              {commentList.map((item, index) => (
+                <div key={index}>
+                  <span>{item?.userId?.username}</span>
+                  <div>{item?.comment}</div>
+                </div>
+              ))}
+              <div className="add-comment">
+                <textarea
+                  name="addComment"
+                  id="addComment"
+                  cols="30"
+                  rows="10"
+                  placeholder="Add Your Thoughts"
+                  style={{ resize: "none" }}
+                  value={textarea}
+                  onChange={handleTextArea}
+                />
+                <button onClick={handleAddComment}>Add Your Thoughts</button>
+              </div>
             </div>
-            <button onClick={handleAddComment}>Add Your Thoughts</button>
-            </div>)}
-
+          )}
         </div>
       </div>
     </div>

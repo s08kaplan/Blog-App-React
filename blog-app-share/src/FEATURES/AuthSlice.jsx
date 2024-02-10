@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: {
+    id:"",
     username: "",
     firstName: "",
     lastName: "",
@@ -33,7 +34,9 @@ const AuthSlice = createSlice({
         lastName: payload.data.lastName,
         image: payload.data.image,
         email: payload.data.email,
-        bio:""
+        bio: payload.data.bio || "",
+        id: payload.data._id
+
       };
 
       state.token = payload.token;
@@ -49,7 +52,8 @@ const AuthSlice = createSlice({
         lastName: payload.user.lastName,
         email: payload.user.email,
         image: payload.user.image,
-        bio:""
+        bio: payload.user.bio || "",
+        id: payload.user._id
       };
 
       state.token = payload.token;
