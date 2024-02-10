@@ -53,21 +53,26 @@ const BlogDetails = () => {
   useEffect(() => {
     addRemoveLike();
     getCommentList();
-    getSingleComment(selectedBlog.comments);
+    
   }, []);
+
+  useEffect(() => {
+    getSingleComment(selectedBlog.comments);
+  }, [blogs.comments])
+  
 
   const handleTextArea = (e) => {
     setTextarea(e.target.value);
-    console.log(textarea);
+    
   };
 
   const handleAddComment = (e) => {
     e.preventDefault();
     try {
       axiosWithToken.post(`comments/`, { blogId: idx, comment: textarea });
-      console.log("added");
       setTextarea("");
       setShowComment(true);
+      getSingleComment(selectedBlog.comments)
     } catch (error) {
       console.log(error);
     }
